@@ -1,5 +1,7 @@
 # WasteLens 🍲
 
+**🔴 Live Demo:** [https://wastelens-dcuo.onrender.com/](https://wastelens-dcuo.onrender.com/)
+
 WasteLens is a local Streamlit decision-support prototype for food-service kitchens. It validates historical CSV data, evaluates demand and waste models on a chronological date holdout, and creates an item-level preparation plan with visible data limitations.
 
 **Synthetic demo data is illustrative only. Do not use its forecasts for operational decisions.** The app does not connect to POS, inventory, weather, supplier, or kitchen-control systems. Forecasts are not guarantees and do not replace operator judgment.
