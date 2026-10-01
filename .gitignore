@@ -1,0 +1,30 @@
+# Environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Streamlit secrets (NEVER commit actual secrets)
+.streamlit/secrets.toml
+secrets.toml
+*secret*.toml
+!secrets.example.toml
+.env
+
+# Application databases / local data
+.wastelens/
+*.db
+*.sqlite
+*.sqlite3
+
+# Python Caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS Files
+.DS_Store
+Thumbs.db

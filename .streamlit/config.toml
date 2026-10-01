@@ -1,0 +1,13 @@
+[theme]
+base = "light"
+primaryColor = "#2F5D3A"
+backgroundColor = "#F6F3EC"
+secondaryBackgroundColor = "#EDE8DA"
+textColor = "#1F2A22"
+font = "sans serif"
+
+[server]
+maxUploadSize = 10
+
+[secrets]
+files = [".streamlit/secrets.toml", "/etc/secrets/secrets.toml"]

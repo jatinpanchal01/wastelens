@@ -1,0 +1,198 @@
+{
+  "dataset_sha256": "7d027be700a2d865e21c3ea403eea51b637e02d2adfb171cace05b806790c8de",
+  "rows": 900,
+  "date_min": "2026-07-01",
+  "date_max": "2026-09-28",
+  "algorithms": {
+    "demand": "random_forest",
+    "waste": "random_forest"
+  },
+  "model_version": "demand-random_forest_waste-random_forest-v2-7d027be7",
+  "quality": "baseline-beating",
+  "demand_metrics": {
+    "mae": 12.287554354724506,
+    "rmse": 18.879204905481384,
+    "r2": 0.9490002678786403,
+    "wape": 0.08075063102776237,
+    "baseline_mae": 28.444444444444443,
+    "baseline_method": "grouped historical median",
+    "rows": 36,
+    "algorithm": "random_forest",
+    "selection_basis": "lowest chronological holdout MAE; ties by three-block MAE stability then inference time",
+    "model_comparison": {
+      "random_forest": {
+        "mae": 12.287554354724506,
+        "stability_mae_std": 2.582315983374768,
+        "fit_ms": 91.80139999989478,
+        "inference_ms": 3.584900000532798
+      },
+      "xgboost": {
+        "mae": 12.940530565049913,
+        "stability_mae_std": 3.350066055638823,
+        "fit_ms": 1751.793400000679,
+        "inference_ms": 3.858600000057777
+      }
+    },
+    "slices": {
+      "meal_type": [
+        {
+          "slice": "Dinner",
+          "rows": 18,
+          "mae": 13.092141704745886
+        },
+        {
+          "slice": "Lunch",
+          "rows": 18,
+          "mae": 11.482967004703127
+        }
+      ],
+      "day_of_week": [
+        {
+          "slice": "4",
+          "rows": 6,
+          "mae": 15.756892085537933
+        },
+        {
+          "slice": "5",
+          "rows": 6,
+          "mae": 4.14143022486773
+        },
+        {
+          "slice": "6",
+          "rows": 6,
+          "mae": 8.971502976190484
+        },
+        {
+          "slice": "0",
+          "rows": 6,
+          "mae": 24.469118165784874
+        },
+        {
+          "slice": "1",
+          "rows": 4,
+          "mae": 8.892641369047617
+        },
+        {
+          "slice": "2",
+          "rows": 4,
+          "mae": 4.834194549663309
+        },
+        {
+          "slice": "3",
+          "rows": 4,
+          "mae": 16.852738095238102
+        }
+      ]
+    }
+  },
+  "waste_metrics": {
+    "mae": 1.1077013435779755,
+    "rmse": 1.563409132271823,
+    "r2": 0.5327680400947579,
+    "wape": 0.3778329799398071,
+    "baseline_mae": 1.2713333333333332,
+    "baseline_method": "grouped historical median",
+    "rows": 180,
+    "algorithm": "random_forest",
+    "selection_basis": "lowest chronological holdout MAE; ties by three-block MAE stability then inference time",
+    "model_comparison": {
+      "random_forest": {
+        "mae": 1.1077013435779755,
+        "stability_mae_std": 0.2347795620479113,
+        "fit_ms": 410.50300000006246,
+        "inference_ms": 10.627800000293064
+      },
+      "xgboost": {
+        "mae": 1.1341021864480443,
+        "stability_mae_std": 0.22359495340483582,
+        "fit_ms": 100.46520000014425,
+        "inference_ms": 4.37679999959073
+      }
+    },
+    "slices": {
+      "meal_type": [
+        {
+          "slice": "Dinner",
+          "rows": 90,
+          "mae": 1.1262007822604352
+        },
+        {
+          "slice": "Lunch",
+          "rows": 90,
+          "mae": 1.089201904895516
+        }
+      ],
+      "day_of_week": [
+        {
+          "slice": "4",
+          "rows": 30,
+          "mae": 1.5059791556437394
+        },
+        {
+          "slice": "5",
+          "rows": 30,
+          "mae": 0.46657036926807743
+        },
+        {
+          "slice": "6",
+          "rows": 30,
+          "mae": 0.5142923236331569
+        },
+        {
+          "slice": "0",
+          "rows": 30,
+          "mae": 1.3741691537397793
+        },
+        {
+          "slice": "1",
+          "rows": 20,
+          "mae": 1.1745852895021645
+        },
+        {
+          "slice": "2",
+          "rows": 20,
+          "mae": 1.5163529348544968
+        },
+        {
+          "slice": "3",
+          "rows": 20,
+          "mae": 1.4868573644179894
+        }
+      ],
+      "menu_item": [
+        {
+          "slice": "Chicken Curry",
+          "rows": 36,
+          "mae": 0.89180496399177
+        },
+        {
+          "slice": "Dal",
+          "rows": 36,
+          "mae": 1.2927086872361173
+        },
+        {
+          "slice": "Rice",
+          "rows": 36,
+          "mae": 1.6671810037377748
+        },
+        {
+          "slice": "Roti",
+          "rows": 36,
+          "mae": 0.9386280369835929
+        },
+        {
+          "slice": "Vegetable Curry",
+          "rows": 36,
+          "mae": 0.7481840259406229
+        }
+      ]
+    }
+  },
+  "library_versions": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "pandas": "2.2.1",
+    "scikit_learn": "1.4.1.post1",
+    "xgboost": "2.0.3"
+  }
+}

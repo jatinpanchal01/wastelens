@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: wastelens
+    runtime: docker
+    plan: starter
+    region: singapore
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: WASTELENS_ENV
+        value: production
+      - key: WASTELENS_DB_PATH
+        value: /app/.wastelens/wastelens.sqlite3
+    disk:
+      name: wastelens-data
+      mountPath: /app/.wastelens
+      sizeGB: 1
