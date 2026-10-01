@@ -710,7 +710,7 @@ with tabs[1]:
             sc_items = st.multiselect("Scenario menu", all_items, default=si["menu_items"])
             unchanged = (sc_customers == si["expected_customers"] and sc_temp == si["temperature"] and
                          sc_event == si["has_event"] and sorted(sc_items) == sorted(si["menu_items"]))
-            apply = st.form_submit_button("Apply scenario", type="primary", disabled=unchanged or not sc_items)
+            apply = st.form_submit_button("Apply scenario", type="primary")
         if apply:
             if sc_customers == 0:
                 st.session_state.pending_zero_scenario = {"customers": int(sc_customers), "temperature": float(sc_temp), "event": sc_event, "items": sc_items}
