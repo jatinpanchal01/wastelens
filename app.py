@@ -60,6 +60,16 @@ if os.environ.get("WASTELENS_ENV", "development").lower() != "development":
         if st.button("Sign out", width="stretch"):
             st.logout()
 
+
+@st.cache_resource(max_entries=2, show_spinner=False)
+def _train_models_cached(dataset_checksum: str, _frame: pd.DataFrame, _algorithms: dict) -> dict:
+    """Share immutable trained models across sessions for identical datasets."""
+    return train_models(_frame, algorithms=_algorithms or None)
+
+
+def train_models_for_dataset(frame: pd.DataFrame, checksum: str, algorithms: dict | None = None) -> dict:
+    return _train_models_cached(checksum, frame, algorithms or {})
+
 for key, default in {"data": None, "models": None, "dataset": None, "baseline": None, "scenario": None, "saved_overrides": {}, "current_plan": {}, "override_reason": "No override", "override_revision": 0}.items():
     if key not in st.session_state: st.session_state[key] = default
 if "session_id" not in st.session_state:
@@ -82,7 +92,8 @@ if not st.session_state.get("workspace_restore_checked"):
             else:
                 with st.spinner("Restoring your saved workspace and rebuilding its models…"):
                     saved_algorithms = st.session_state.dataset.get("algorithms", {})
-                    st.session_state.models = train_models(st.session_state.data, algorithms=saved_algorithms)
+                    st.session_state.models = train_models_for_dataset(
+                        st.session_state.data, st.session_state.dataset["checksum"], saved_algorithms)
                 actual_algorithms = {"demand": st.session_state.models["demand_algorithm"], "waste": st.session_state.models["waste_algorithm"]}
                 st.session_state.dataset["algorithms"] = actual_algorithms
                 st.session_state.dataset["library_versions"] = st.session_state.models["library_versions"]
@@ -138,7 +149,7 @@ def reset_scenario_callback():
     persist_workspace()
 
 def commit_dataset(df, checksum, provenance, warnings):
-    trained_models = train_models(df)
+    trained_models = train_models_for_dataset(df, checksum)
     algorithms = {"demand": trained_models["demand_algorithm"], "waste": trained_models["waste_algorithm"]}
     model_version = f"demand-{algorithms['demand']}_waste-{algorithms['waste']}-v2-{checksum[:8]}"
     dataset_metadata = {"id": checksum[:12], "checksum": checksum, "model_version": model_version,
